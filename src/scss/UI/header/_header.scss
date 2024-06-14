@@ -1,6 +1,6 @@
 .header {
 
-  min-height:80vh;
+  min-height:50rem;
   @include telefono{
     min-height: 100vh;
   }
@@ -66,5 +66,10 @@
         display: block;
     }
   }
-  
+  &__form{
+    display: flex;
+  }
+  &__submit{
+    @extend .header__enlace;
+  }
 }

@@ -6,7 +6,10 @@ use MVC\Router;
 class RegistradosControllers{
 
     public static function index (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         $router->render("admin/registrados/index",[
             "titulo" => "Usuarios Registrados"
         ]);

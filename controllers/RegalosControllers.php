@@ -6,7 +6,10 @@ use MVC\Router;
 class RegalosControllers{
 
     public static function index (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         $router->render("admin/regalos/index",[
             "titulo" => "Regalos"
         ]);

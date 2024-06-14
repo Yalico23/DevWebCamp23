@@ -5,6 +5,7 @@ use Model\Dia;
 use Model\Evento;
 use Model\Ponente;
 use Model\EventoHorario;
+use Model\Usuario;
 
 class ApiControllers {
     public static function horarios(){
@@ -28,6 +29,7 @@ class ApiControllers {
 
     public static function ponentes(){
         $ponentes = Ponente::all();
+        //debuguear($ponentes);
         echo json_encode($ponentes);
     }
 
@@ -43,5 +45,6 @@ class ApiControllers {
         $ponente = Ponente::find($Id);
         echo json_encode($ponente , JSON_UNESCAPED_SLASHES);
     }
+
 }
 ?>

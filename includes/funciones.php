@@ -23,24 +23,11 @@ function esUltimo (string $actual, string $proximo): bool{
     }
 }
 
-function is_Auth() : void{
-    if (!isset($_SESSION['Login'])) {
-        header('Location: /');
-    }
+function is_Auth() : bool{
+    return isset($_SESSION['Nombre']) && !empty($_SESSION);
 }
-function is_Admin() : void{
-    if (!isset($_SESSION['Admin'])) {
-        header('Location: /');
-    }
-}
-
-function redireccionar(): void{
-
-    if (isset($_SESSION['login']) && isset($_SESSION['Admin'])) {
-        header("Location: /admin/dashboard");
-    }elseif(isset($_SESSION['login'])){
-        header("Location: /");
-    }
+function is_Admin() : bool{
+    return isset($_SESSION['Admin']) && !empty($_SESSION['Admin']);
 }
 
 function validarRedireccionar($URL)

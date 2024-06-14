@@ -12,7 +12,10 @@ use Model\Ponente;
 class EventosControllers{
 
     public static function index (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
 
         $pagina_actual = $_GET['page'];
         if (!$pagina_actual || $pagina_actual < 1) {
@@ -46,7 +49,10 @@ class EventosControllers{
         ]);
     }
     public static function crear (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         $alertas = [];
         $categorias = Categoria::all();
         $dias = Dia::all();
@@ -74,7 +80,10 @@ class EventosControllers{
         ]);
     }
     public static function editar (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
 
         $alertas = [];
         $Id = $_GET['Id'];
@@ -109,7 +118,10 @@ class EventosControllers{
         ]);
     }
     public static function eliminar (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Id = $_POST['Id'];
             $evento = Evento::find($Id);

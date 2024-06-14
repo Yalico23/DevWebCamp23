@@ -9,7 +9,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PonentesControllers{
 
     public static function index (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         //del curso 
         $pagina_actual = $_GET['page'];
         if (!$pagina_actual || $pagina_actual < 1) {
@@ -38,7 +41,10 @@ class PonentesControllers{
     }
     
     public static function crear (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         $alertas = [];
         $ponente = new Ponente();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -83,7 +89,10 @@ class PonentesControllers{
     }
 
     public static function editar (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         $alertas = [];
         $Id = $_GET['Id'];
         validarRedireccionar("/admin/ponentes");
@@ -137,7 +146,10 @@ class PonentesControllers{
     }
 
     public static function eliminar(){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ponente = Ponente::find($_POST['Id']);
             ExisteDato($ponente,"/admin/ponentes");

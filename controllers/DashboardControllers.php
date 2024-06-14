@@ -6,7 +6,11 @@ use MVC\Router;
 class DashboardControllers{
 
     public static function index (Router $router){
-        is_Admin();
+        $log = is_Admin();
+        if(!$log){
+            header('Location: /');
+        }
+        
         $router->render("admin/dashboard/index",[
             "titulo" => "Panel de Administración"
         ]);
